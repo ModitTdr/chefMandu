@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/register.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="boxRegister">
+      <div class="mobileimg"></div>
+      <div class="innerBox">
+        <div class="image">
+          <img src="../img/new-logo-svg-cropped.svg" alt="" />
+        </div>
+
+        <div class="formWrap">
+          <div id="heading">Register</div>
+
+          <div class="form-input">
+            <form action="">
+              <span id="user-wrapper">
+                <input type="text" placeholder="Username" id="uname" required />
+                <span class="input-img">
+                  <img src="../img/user-solid.svg" alt="" />
+                </span>
+              </span>
+
+              <span id="email-wrapper">
+                <input type="email" placeholder="Email" id="pass" required />
+                <span class="input-img">
+                  <img src="../img/email.svg" alt="" />
+                </span>
+              </span>
+
+              <span id="pass-wrapper">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  id="pass"
+                  required
+                />
+                <span class="input-img">
+                  <img src="../img/key-solid.svg" alt="" />
+                </span>
+              </span>
+
+              <span id="pass-wrapper">
+                <input
+                  type="password"
+                  placeholder="Re-password"
+                  id="pass"
+                  required
+                />
+                <span class="input-img">
+                  <img src="../img/key-solid.svg" alt="" />
+                </span>
+              </span>
+
+              <button id="btnReg">Submit</button>
+              <p>
+                Already have an account?
+                <a href="login.html" id="reg">Login</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/validate.js"></script>
+  </body>
+</html>
