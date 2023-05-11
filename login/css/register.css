@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+/*=====Colors=====*/
+:root {
+  --primary-color: rgba(51, 51, 51);
+  --secondary-color: rgba(255, 242, 204);
+  /* --third-color: #464de8; */
+  --third-color: rgba(255, 133, 0);
+}
+/*=====Colors=====*/
+
+/*=====Global=====*/
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+a {
+  text-decoration: none;
+  color: var(--third-color);
+}
+body {
+  background-color: var(--primary-color);
+}
+
+/*=====Global=====*/
+
+/*=====body=====*/
+.box {
+  display: none;
+}
+.boxRegister {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.innerBox {
+  width: 75vw;
+  height: 75vh;
+  background-color: var(--secondary-color);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.image img {
+  width: 80%;
+  height: auto;
+}
+.image {
+  width: 40%;
+  align-self: center;
+  text-align: left;
+}
+#heading {
+  display: flex;
+  align-items: flex-end;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+.formWrap {
+  margin: auto;
+}
+.form-input form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--primary-color);
+}
+.form-input input {
+  background: rgba(51, 51, 51, 0.45);
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  min-width: 10vw;
+  max-width: 28vw;
+  width: 280px;
+  height: 48px;
+  margin: 5px 0px 30px 0px;
+  padding: 4px 12px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+}
+input:focus {
+  transition: 0.1s all;
+  outline: 2px solid black;
+  box-shadow: 3px 4px 10px 0px black;
+}
+input::placeholder {
+  font-style: normal;
+  font-size: 16px;
+  color: rgba(51, 51, 51, 0.71);
+}
+.form-input p {
+  font-weight: 700;
+  margin-top: 10px;
+}
+#user-wrapper,
+#email-wrapper,
+#pass-wrapper,
+#repass-wrapper {
+  position: relative;
+}
+.input-img {
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  width: 1.2rem;
+}
+
+#btnReg {
+  border: none;
+  border-radius: 6px;
+  background-color: var(--third-color);
+  font-size: 16px;
+  color: var(--secondary-color);
+  font-weight: 600;
+  padding: 5px 10px;
+  transition: 0.05s all;
+}
+#btnReg:hover {
+  background-color: rgb(218, 112, 0);
+  transform: scale(1.02);
+}
