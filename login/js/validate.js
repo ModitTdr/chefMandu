@@ -2,28 +2,31 @@ var btn = document.querySelector("#btn");
 var btnReg = document.querySelector("#btnReg");
 var input = document.querySelectorAll("input");
 
-var nameVal = /^[a-zA-Z][a-zA-Z0-9_-]{2,15}$/;
+var nameVal = /^[a-zA-Z][a-zA-Z0-9_]{2,}$/;
 var emailVal = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 if (btn) {
-  btn.addEventListener("click", function () {
+  btn.addEventListener("click", function (event) {
     //validating fullname
     if (!nameVal.test(input[0].value)) {
+      event.preventDefault();
       validateStyle(input[0]);
     } else {
       removeValStyle(input[0], 0);
     }
   });
 } else {
-  btnReg.addEventListener("click", function () {
+  btnReg.addEventListener("click", function (event) {
     //validating fullname
     if (!nameVal.test(input[0].value)) {
+      event.preventDefault();
       validateStyle(input[0]);
     } else {
       removeValStyle(input[0], 0);
     }
     //validating email
     if (!emailVal.test(input[1].value)) {
+      event.preventDefault();
       validateStyle(input[1]);
     } else {
       removeValStyle(input[1], 0);

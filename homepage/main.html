@@ -2,28 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Comptatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ChefMandu</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="css/slider.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <title>ChefMandu</title>
   </head>
   <body>
-    <div class="aa">
-      <div class="nav">
-        <div class="logo">
-          <img src="../img/new-logo-svg-cropped.svg" alt="" />
-        </div>
-
-        <div class="menus">
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Recipes</a></li>
-            <li><a href="#">AboutUs</a></li>
-            <li><a href="#">Login</a></li>
-          </ul>
-        </div>
+    <div class="nav">
+      <div class="logo">
+        <img src="../img/new-logo-svg-cropped.svg" alt="" />
       </div>
 
+      <div class="menus">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Recipes</a></li>
+          <li><a href="#">AboutUs</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div>
+      <div class="activeBar">
+        <input type="checkbox" name="" id="check" />
+        <label for="check" class="checkBtn">
+          <i class="fa-solid fa-bars"></i>
+        </label>
+      </div>
+    </div>
+
+    <div class="aa">
       <div class="hero">
         <div class="hero-wrapper">
           <section class="hero-left">
@@ -67,7 +85,96 @@
         </div>
       </div>
     </div>
+    <hr />
+    <!-- <div class="row2">
+      <div class="recipe-nav">
+        <div class="recipe-nav-wrapper">
+          <div class="recipe-nav-items">
+            <img src="../img/salad1.png" alt="" />
+            <div class="recipe-nav-items-body">
+              <h5>Salads</h5>
+            </div>
+          </div>
 
+          <div class="recipe-nav-items">
+            <img src="../img/burger.jpg" alt="" />
+            <div class="recipe-nav-items-body">
+              <h5>FastFoods</h5>
+            </div>
+          </div>
+
+          <div class="recipe-nav-items">
+            <img src="../img/drink.jpg" alt="" />
+            <div class="recipe-nav-items-body">
+              <h5>Drinks</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="row2">
+      <h1>Categories</h1>
+      <div class="slider-container">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="recipe-nav-items">
+                <img src="../img/burger.jpg" alt="" />
+                <div class="recipe-nav-items-body">
+                  <h5>Burger</h5>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="recipe-nav-items">
+                <img src="../img/salad1.png" alt="" />
+                <div class="recipe-nav-items-body">
+                  <h5>Salads</h5>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="recipe-nav-items">
+                <img src="../img/drink.jpg" alt="" />
+                <div class="recipe-nav-items-body">
+                  <h5>Drinks</h5>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="recipe-nav-items">
+                <img src="../img/salad1.png" alt="" />
+                <div class="recipe-nav-items-body">
+                  <h5>Salads</h5>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="recipe-nav-items">
+                <img src="../img/salad1.png" alt="" />
+                <div class="recipe-nav-items-body">
+                  <h5>Salads</h5>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="recipe-nav-items">
+                <img src="../img/salad1.png" alt="" />
+                <div class="recipe-nav-items-body">
+                  <h5>Salads</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br /><br />
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="js/slider.js"></script>
     <script src="js/navbar.js"></script>
   </body>
 </html>
