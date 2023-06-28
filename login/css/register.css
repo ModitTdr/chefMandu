@@ -83,16 +83,21 @@ body {
   max-width: 28vw;
   width: 280px;
   height: 48px;
-  margin: 5px 0px 30px 0px;
+  margin: 5px 0px 15px 0px;
   padding: 4px 12px;
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
 }
 input:focus {
-  transition: 0.1s all;
-  outline: 2px solid black;
-  box-shadow: 3px 4px 10px 0px black;
+  outline: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
 }
 input::placeholder {
   font-style: normal;
@@ -129,4 +134,8 @@ input::placeholder {
 #btnReg:hover {
   background-color: rgb(218, 112, 0);
   transform: scale(1.02);
+}
+.error {
+  font-size: 14px;
+  color: red;
 }

@@ -90,9 +90,14 @@ body {
   font-size: 16px;
 }
 input:focus {
-  transition: 0.1s all;
-  outline: 2px solid black;
-  box-shadow: 3px 4px 10px 0px black;
+  outline: none;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
+  -webkit-transition-delay: 9999s;
 }
 input::placeholder {
   font-style: normal;
@@ -129,12 +134,16 @@ input::placeholder {
   background-color: rgb(218, 112, 0);
   transform: scale(1.02);
 }
+.error {
+  font-size: 14px;
+  color: red;
+}
 /*==============*/
 
 /*Responsive*/
 @media (min-width: 2000px) {
   .innerBox {
-    grid-template-columns: 2fr 1.4fr;
+    grid-template-row: 2fr 1.4fr;
   }
   .image {
     width: 540px;
@@ -161,18 +170,19 @@ input::placeholder {
     width: 100%;
     height: 80%;
     border-radius: 10px 10px 0px 0px;
-    grid-template-areas:
-      "one"
-      "two";
-    grid-template-columns: 1fr;
-    grid-template-rows: 1.4fr 3fr;
-    justify-items: center;
-    align-items: self-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
   .image {
-    grid-area: one;
-    width: 46vw;
-    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+  }
+  .image img {
+    width: 100%;
   }
   .formWrap {
     grid-area: two;

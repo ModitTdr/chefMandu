@@ -19,26 +19,41 @@
           <div id="heading">Register</div>
 
           <div class="form-input">
-            <form action="">
+            <form action="php/register.php" method="POST">
+              <div class="error"></div>
               <span id="user-wrapper">
-                <input type="text" placeholder="Username" id="uname" required />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  id="uname"
+                  name="uname"
+                  required
+                />
                 <span class="input-img">
                   <img src="../img/user-solid.svg" alt="" />
                 </span>
               </span>
 
+              <div class="error"></div>
               <span id="email-wrapper">
-                <input type="email" placeholder="Email" id="pass" required />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  id="pass"
+                  name="email"
+                />
                 <span class="input-img">
                   <img src="../img/email.svg" alt="" />
                 </span>
               </span>
 
+              <div class="error"></div>
               <span id="pass-wrapper">
                 <input
                   type="password"
                   placeholder="Password"
                   id="pass"
+                  name="password"
                   required
                 />
                 <span class="input-img">
@@ -46,11 +61,13 @@
                 </span>
               </span>
 
+              <div class="error"></div>
               <span id="pass-wrapper">
                 <input
                   type="password"
                   placeholder="Re-password"
                   id="pass"
+                  name="repassword"
                   required
                 />
                 <span class="input-img">
@@ -58,7 +75,7 @@
                 </span>
               </span>
 
-              <button id="btnReg">Submit</button>
+              <button id="btnReg" value="submit" name="submit">Submit</button>
               <p>
                 Already have an account?
                 <a href="login.html" id="reg">Login</a>
