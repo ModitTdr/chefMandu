@@ -14,9 +14,25 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- login -->
+    <!-- alert box -->
+    <?php
+      session_start();
+      if(!empty($_SESSION['loginStatus'])){
+        if($_SESSION['loginStatus']=="Username"){
+            echo "<div class='status'>Wrong username</div>";
+          }else if($_SESSION['loginStatus']=="Password"){
+            echo "<div class='status'>Wrong password</div>";
+          }
+        }
+      session_destroy();
+      unset($_SESSION['loginStatus']);
+      ?>
+
+      <!-- login -->
     <div class="box">
+      
       <div class="mobileimg"></div>
+      
       <div class="innerBox">
         <div class="image">
           <img src="../img/new-logo-svg-cropped.svg" alt="" />
@@ -55,11 +71,12 @@
               </span>
 
               <button id="btn" name="submit" value="submit">Submit</button>
-              <p>No Account? <a href="register.html" id="reg">Register</a></p>
+              <p>No Account? <a href="register.php" id="reg">Register</a></p>
             </form>
           </div>
         </div>
       </div>
+
     </div>
 
     <script src="js/validate.js"></script>

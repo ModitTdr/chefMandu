@@ -4,6 +4,8 @@
     $title = $_GET['editTitle'];
     $ingredient = $_GET['editIngredient'];
     $description = $_GET['editDesc'];
+    $role = $_GET['role'];
+    session_start();
 ?>
 <html>
 <head>
@@ -56,6 +58,7 @@
                     <input type="file" name="image" id="file">
                 </div>
                 <input type="hidden" value="<?php echo $id ?>" name="updateId"/>
+                <input type="hidden" value="<?php echo $role ?>" name="role"/>
                 <input type="submit" name='submit' value="Submit" id="SubmitBtn">
             </form>
         </div>
@@ -67,9 +70,17 @@
         $updatedTitle = $_GET['title'];
         $updatedIngredients = $_GET['ingredient'];
         $updatedDescription = $_GET['description'];
+        $formRole = $_GET['role'];
         $updateId = $_GET['updateId'];
         $updateQuery="UPDATE recipes SET rtitle='$updatedTitle', ringredients='$updatedIngredients', rdescription='$updatedDescription' WHERE rid='$updateId' ";
         $updateQueryRun = mysqli_query($conn,$updateQuery);
-        header("Location:../dashboard/admin.php");
+        if($updateQueryRun){
+            $_SESSION['updateStatus'] = 'tab4';
+            if($formRole=='admin'){
+                header("Location:../dashboard/admin.php");
+            }else{
+                header("Location:../dashboard/client.php");
+            }
+        }   
     }
 ?>

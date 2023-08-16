@@ -1,6 +1,5 @@
 var tabs = document.querySelectorAll(".tabs li");
 var content = document.querySelectorAll(".tabs-data");
-
 tabs.forEach((i, index) => {
   i.addEventListener("click", function () {
     // removes all the active tabs
@@ -36,3 +35,14 @@ createRecipe.addEventListener("click", function () {
   // actives a specific conten
   content[1].classList.add("active");
 });
+
+//for alert message
+var alert = document.querySelector(".status");
+//dashboard - user list alert
+if (alertMsg == "tab3" || alertMsg == "tab3Failed") {
+  tabs[2].click();
+}
+//dashboard - product alert
+if (alertMsg == "tab4" || alertMsg == "tab4Failed") {
+  tabs[tabs.length - 1].click();
+}

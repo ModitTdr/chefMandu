@@ -86,3 +86,9 @@ function removeValStyle(element) {
 function isNumber(char) {
   return /^[0-9~`!@#$%^&*()_\-+={[}\]|:;"'<,>.?/]+$/.test(char);
 }
+
+//alert
+var alert = document.querySelector(".status");
+setTimeout(function () {
+  alert.classList.add("close");
+}, 8000);

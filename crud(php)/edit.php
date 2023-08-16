@@ -51,23 +51,66 @@
                 </span>
               </span>
             <input type="hidden" value="<?php echo $id ?>" name="updateId"/>
+            <span id="btns">
               <button id="btnReg" value="submit" name="submit">Update</button>
+              <button id="btnBack" value="back" name="back">Go Back</button>
+            </span>
             </form>
           </div>
         </div>
       </div>
     </div>
     <script src="val(edit).js"></script>
+    <script>
+      var inputs = document.querySelectorAll('input');
+      var btn = document.querySelector('#btnReg');
+      let oldInput=[];
+      for(let i=0; i<inputs.length;i++){
+        oldInput[i] = inputs[i].value;
+      }
+      btn.addEventListener("click",function(e){
+        for(let i=0; i<inputs.length; i++){
+          if(oldInput[0]==inputs[0].value && oldInput[1]==inputs[1].value){
+            e.preventDefault();
+            alert("Go Back or change the data");
+            btn.style.background = "grey";
+            break;  
+          }
+        }
+      });
+    </script>
+    
   </body>
 </html>
+
 <?php
     if(isset($_GET['submit'])){
+      
         $updatedUname = $_GET['uname'];
         $updatedEmail = $_GET['email'];
         $updatedRole = $_GET['role'];
         $updateId = $_GET['updateId'];
         $updateQuery="UPDATE users SET username='$updatedUname', email='$updatedEmail', role='$updatedRole' WHERE id='$updateId' ";
-        $updateQueryRun = mysqli_query($conn,$updateQuery);
-        header("Location:../dashboard/admin.php");
+        
+        //to check duplication
+        $dupUser = "SELECT * from users WHERE username='$updatedUname' ";
+        $dupEmail = "SELECT * from users WHERE email='$updatedEmail' ";
+        $dupUserExe = mysqli_query($conn,$dupUser);
+        $dupEmailExe = mysqli_query($conn,$dupEmail);
+        
+        session_start();
+        if(mysqli_num_rows($dupUserExe) > 0 && mysqli_num_rows($dupEmailExe) > 0){
+          $_SESSION['updateStatus'] = 'tab3Failed';
+          header("Location:../dashboard/admin.php");
+        }else{
+          $updateQueryRun = mysqli_query($conn,$updateQuery);
+          if($updateQueryRun){
+            $_SESSION['updateStatus'] = 'tab3';
+          }
+          header("Location:../dashboard/admin.php");
+        } 
+    }
+    if(isset($_GET['back'])){
+      header("Location:../dashboard/admin.php");
     }
 ?>

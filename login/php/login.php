@@ -36,10 +36,12 @@ if(isset($_POST['submit'])){
                 header('Location:../../homepage/main.php');
             }
         }else{
-            die('Password error');
+            $_SESSION['loginStatus'] = 'Password';
+            header('Location:../login.php');
         } 
     }else{
-        die("Username doesn't exists");
+        $_SESSION['loginStatus'] = 'Username';
+        header('Location:../login.php');
     }
 }
     

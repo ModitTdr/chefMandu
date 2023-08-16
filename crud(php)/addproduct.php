@@ -9,15 +9,16 @@
     $image =$_FILES["image"];
     $temp_name =$_FILES["image"]["tmp_name"];
     $name = $_FILES["image"]["name"];
+    $uid = $_POST['uid'];
+    $cid = $_POST['categories'];
         
-    if(!empty($title) || !empty($ingredient) || !empty($description) ){
+    if(!empty($title) || !empty($ingredient) || !empty($description) || !empty($cid) ){
 
         if(move_uploaded_file($temp_name, '../uploads/'.$name)){
-            $insertQuery = "INSERT INTO recipes(rtitle,ringredients,rdescription,rimg) VALUES('$title','$ingredient','$description','$name')";
+            $insertQuery = "INSERT INTO recipes(rtitle,ringredients,rdescription,rimg,id,cate_id) VALUES('$title','$ingredient','$description','$name','$uid','$cid')";
             $insertExe = mysqli_query($conn,$insertQuery);
             session_start();
             $role = $_SESSION['role'];
-echo$role;
             if($role=='admin'){
                 header("Location:../dashboard/admin.php");
             }else{

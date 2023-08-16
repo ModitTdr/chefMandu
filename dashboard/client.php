@@ -60,6 +60,12 @@
                 <span>Recipe List</span>
               </button>
             </li>
+            <li>
+              <button>
+              <i class="fa-sharp fa-solid fa-heart"></i>
+                <span>Favourites</span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -117,7 +123,7 @@
             </div>
             <!-- Dashboard Section Row-2 -->
             <div class="dash-header">
-              <div class="profile-wrapper">
+              <div class="profile-wrapper"> 
                 <div class="profile-header">
                   <i class="uil uil-user"></i>
                 </div>
@@ -128,7 +134,7 @@
                     if(!empty($username)){
                       echo $username;
                     }else{
-                      header('Location:../login/login.html');
+                      header('Location:../login/login.php');
                     }
                     ?>
                   </span>
@@ -205,7 +211,7 @@
                 18v-3.416h-1.5V18h1.5Zm-.45-4.103A4.251 4.251 0 0 1 2.75 10h-1.5a5.751 5.751 0 0 0 3.45 5.271l.6-1.374Zm12.95.687V18h1.5v-3.416h-1.5Zm3-4.584a4.251 4.251 0 0 
                 1-2.55 3.897l.6 1.374A5.751 5.751 0 0 0 22.75 10h-1.5Zm-5.5-3.5V7h1.5v-.5h-1.5Zm-9 0V7h1.5v-.5h-1.5Z"
                 />
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 18h14"/></g>
+                <path stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 18h14"/></g>
                 </svg>
               <span>Add Recipes</span>
             </div>
@@ -223,6 +229,12 @@
                   <label for="description">Description</label>
                   <textarea name="description" id="description" cols="11" rows="3" maxlength="50"></textarea>
                 </div>
+                <div class="category">
+                  <select name="categories">
+                    <option value="1">Vegetarian</option>
+                    <option value="2">Non-Vegetarian</option>
+                  </select>
+                </div>
                 <div class="prodImage">
                   <label for="file">
                     <i class="fa-solid fa-upload"></i>
@@ -230,20 +242,37 @@
                   </label>
                   <input type="file" name="image" id="file">
                 </div>
+                <input type='hidden' name='uid' value="<?php echo $id?>">
                 <input type="submit" value="Submit" id="SubmitBtn">
               </form>
             </div>
           </div>
         </div>
-        <!-- Recipe List  tab -->
+        <!-- Recipe List tab -->
         <div class="tabs-data">
           <div class="UserListcontent">      
             <div class="dash-title">
-              <i class="uil uil-users-alt"></i>
-              <span>Users List</span>
+            <i class="fa-solid fa-book" style="color: #000000;"></i>
+              <span>Recipe List</span>
+              <?php
+                if(!empty($_SESSION['updateStatus'])){
+                  if($_SESSION['updateStatus']=="tab4"){
+                    echo "<div class='status'>Success</div>";
+                  }else if($_SESSION['updateStatus']=="tab4Failed"){
+                    echo "<div class='status red'>Failed</div>";
+                  }
+                }
+              ?>
             </div>
             <div class="table-container">
                 <table>
+                  <?php
+                    $selectQuery = "SELECT * FROM recipes WHERE id=$id";
+                    $selectExec = mysqli_query($conn,$selectQuery);
+                    if(mysqli_num_rows($selectExec)==0){
+                      echo "<div style='text-align:center;font-size:1.2em;'>No recipes added</div>";
+                    }else{
+                  ?>
                   <tr>
                     <th>Id</th>
                     <th>Title</th>
@@ -254,24 +283,24 @@
                     <th>Delete</th>
                   </tr>
                   <?php
-                    $selectQuery = "SELECT * FROM recipes";
-                    $selectExec = mysqli_query($conn,$selectQuery);
+                    $i=0;
                     while($row = mysqli_fetch_assoc($selectExec)){
                       $id = $row['rid'];
                       $title = $row['rtitle'];
                       $ingredient = $row['ringredients'];
                       $description = $row['rdescription'];
                       $img = $row['rimg'];
+                      $i++;
                   ?>
                   <tr>
-                    <td><?php echo $id?></td>
+                    <td><?php echo $i?></td>
                     <td><?php echo $title?></td>
                     <td><?php echo $ingredient?></td>
                     <td><?php echo $description?></td>
                     <td><?php echo "<img style='width:120px;' src='../uploads/$img'>"?></td>
                     <td>
                       <?php
-                      echo "<a href='../crud(php)/editproduct.php?id=$id&editTitle=$title&editIngredient=$ingredient&editDesc=$description'><button id='edit'>Edit</button<</a>";
+                      echo "<a href='../crud(php)/editproduct.php?id=$id&editTitle=$title&editIngredient=$ingredient&editDesc=$description&role=$role'><button id='edit'>Edit</button<</a>";
                       ?>
                     </td>
                   <td>
@@ -280,16 +309,29 @@
                     ?>
                   </td>
                 </tr>
-                <?php } ?>
+                <?php }} ?>
                 </table>
             </div>
   
           </div>
         </div>
+        <!-- Favourites List tab -->
+        <?php include_once('fav-tab.php');?>
+
       </div>
     </section>
 
+    <script>
+      <?php
+        if(!empty($_SESSION['updateStatus'])){
+      ?>
+       var alertMsg = <?php echo json_encode($_SESSION['updateStatus']); }?>;
+       
+    </script>
     <script type ="text/javascript" src="js/script.js"></script>
     <script type ="text/javascript" src="../homepage/js/tabs.js"></script>
+    <?php 
+      unset($_SESSION['updateStatus']);
+    ?>
   </body>
 </html>

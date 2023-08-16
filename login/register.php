@@ -8,7 +8,19 @@
     <title>Document</title>
   </head>
   <body>
+  <?php
+      session_start();
+      if(!empty($_SESSION['registerStatus'])){
+        if($_SESSION['registerStatus']=="Username"){
+            echo "<div class='status'>Username already exists</div>";
+          }else if($_SESSION['registerStatus']=="Email"){
+            echo "<div class='status'>Email already exists</div>";
+          }
+        }
+     
+      ?>
     <div class="boxRegister">
+      
       <div class="mobileimg"></div>
       <div class="innerBox">
         <div class="image">
@@ -78,7 +90,7 @@
               <button id="btnReg" value="submit" name="submit">Submit</button>
               <p>
                 Already have an account?
-                <a href="login.html" id="reg">Login</a>
+                <a href="login.php" id="reg">Login</a>
               </p>
             </form>
           </div>
