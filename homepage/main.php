@@ -25,7 +25,6 @@
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="recipes/recipeDash.php">Recipes</a></li>
-          <li><a href="#">AboutUs</a></li>
           <?php
             session_start();
             if(!empty($_SESSION['isLoggedIn'] )){
@@ -108,7 +107,7 @@
             variety of cuisines, flavors, and dietary preferences.
           </p>
         </div>
-        <div class="services">
+        <!-- <div class="services">
           <svg
             width="700pt"
             height="700pt"
@@ -159,12 +158,12 @@
           </svg>
           <h5>Many Recipes</h5>
           <p>Varieties of recipes to choose from.</p>
-        </div>
+        </div> -->
       </div>
     </div>
     
     <div class="row2" id="explore">
-      <h1>Top Recipes</h1>
+      <h1>Cook Fast</h1>
       <div class="tabs">
         <!-- Tabs -->
         <ul>
@@ -218,7 +217,7 @@
             <li>Vegeterian</li>
           </div>
           
-          <div class="tabs-nav">
+          <!-- <div class="tabs-nav">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -233,14 +232,29 @@
               />
             </svg>
             <li>Drinks</li>
-          </div>
+          </div> -->
         </ul>
 
         <!-- Tabs Content -->
         <?php include_once("tab-content.php") ?>
         
+        
       </div>
     </div>
+    
+    <div class="footer">
+      <p align="center">&copy;2023 - CHEFMANDU</p>
+      <div class="links">
+        <a href="#"><i class="fa-brands fa-facebook" style="color: #000;"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram" style="color: #000;"></i></a>
+        <a href="#"><i class="fa-brands fa-github" style="color: #000;"></i></a>
+      </div>
+      <div class="foot_img">
+        <img src="../img/pngegg.png" alt="">
+        <img src="../img/dish.png" alt="">
+      </div>
+    </div>
+    
 
     <script src="js/navbar.js"></script>
     <script src="js/tabs.js"></script>

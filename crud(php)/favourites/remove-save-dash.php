@@ -13,9 +13,9 @@
     $delExe = mysqli_query($conn, $del);
     if($delExe){
         session_start();
-        $_SESSION['favDel'] = 'deleted';
-        if($_SESSION['role']=='admin'){
-            header('Location:../../homepage/recipe/recipeDash.php');
+        // $_SESSION['favDel'] = 'deleted';
+        if($_SESSION['Role']=='admin'){
+            header('Location:../../dashboard/admin.php');
         }else{
             header("Location:../../dashboard/client.php");
         }

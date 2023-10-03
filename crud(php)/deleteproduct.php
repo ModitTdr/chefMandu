@@ -4,7 +4,8 @@
     $delQuery = "DELETE FROM recipes WHERE rid = '$id' ";
     $delExe = mysqli_query($conn,$delQuery);
     session_start();
-    $role = $_SESSION['role'];
+    $role = $_SESSION['Role'];
+    $_SESSION['updateStatus'] = 'tab4';
     if($role=='admin'){
         header("Location:../dashboard/admin.php");
     }else{

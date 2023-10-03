@@ -4,8 +4,37 @@
     $title = $_GET['editTitle'];
     $ingredient = $_GET['editIngredient'];
     $description = $_GET['editDesc'];
+    $cate = $_GET['cate'];
+    $prep = $_GET['prep'];
     $role = $_GET['role'];
+    $infos = $_GET['infos'];
     session_start();
+?>
+
+<?php
+    if(isset($_GET['submit'])){
+        $updatedTitle = $_GET['title'];
+        $updatedIngredients = $_GET['ingredient'];
+        $updatedDescription = $_GET['description'];
+        $updatedCategory = $_GET['categories'];
+        $updatedPrepTime = $_GET['prept'];
+        $updatedInfos = $_GET['info'];
+        $formRole = $_GET['role'];
+        $updateId = $_GET['updateId'];
+        $updateQuery="UPDATE recipes SET rtitle='$updatedTitle', ringredients='$updatedIngredients', rdescription='$updatedDescription',cate_id='$updatedCategory',infos='$updatedInfos',prep_time_min='$updatedPrepTime' WHERE rid='$updateId' ";
+        $updateQueryRun = mysqli_query($conn,$updateQuery);
+        if($updateQueryRun){
+            $_SESSION['updateStatus'] = 'tab4';
+            if($formRole=='admin'){
+                header("Location:../dashboard/admin.php");
+                exit();
+            }else{
+                header("Location:../dashboard/client.php");
+                exit();
+            }
+        }   
+    }
+    
 ?>
 <html>
 <head>
@@ -47,8 +76,28 @@
                     <textarea name="ingredient" id="ingredient" cols="11" rows="3"><?php echo $ingredient?></textarea>
                 </div>
                 <div class="prodDesc">
-                    <label for="description">Description</label>
+                    <label for="description">Process</label>
                     <textarea name="description" id="description" cols="11" rows="3" maxlength="50"><?php echo $description?></textarea>
+                </div>
+                <div class="category">
+                  <div>
+                    <label for="prep">Cooking Time</label>
+                    <input type="number" id="prep" name="prept" value="<?php echo $prep?>" required placeholder="In minutes(i.e.120)">
+                  </div>
+                  <div>
+                    <label for="cate">Category</label>
+                    <?php if($cate=='Vegetarian'){?>
+                    <select name="categories" id="cate">
+                      <option value="1">Vegetarian</option>
+                      <option value="2">Non-Vegetarian</option>
+                    </select>
+                    <?php }else{?>
+                        <select name="categories" id="cate">
+                        <option value="2">Non-Vegetarian</option>
+                        <option value="1">Vegetarian</option>
+                    </select>
+                    <?php }?>
+                  </div>
                 </div>
                 <div class="prodImage">
                     <label for="file">
@@ -57,6 +106,11 @@
                     </label>
                     <input type="file" name="image" id="file">
                 </div>
+                <div class="prodDesc">
+                  <label for="description">Description</label>
+                  <textarea name="info" id="description" cols="11" rows="3" maxlength="200" required placeholder="Tell something about your recipe"><?php echo $infos?></textarea>
+                </div>
+                
                 <input type="hidden" value="<?php echo $id ?>" name="updateId"/>
                 <input type="hidden" value="<?php echo $role ?>" name="role"/>
                 <input type="submit" name='submit' value="Submit" id="SubmitBtn">
@@ -65,22 +119,3 @@
     </div>
 </body>
 </html>
-<?php
-    if(isset($_GET['submit'])){
-        $updatedTitle = $_GET['title'];
-        $updatedIngredients = $_GET['ingredient'];
-        $updatedDescription = $_GET['description'];
-        $formRole = $_GET['role'];
-        $updateId = $_GET['updateId'];
-        $updateQuery="UPDATE recipes SET rtitle='$updatedTitle', ringredients='$updatedIngredients', rdescription='$updatedDescription' WHERE rid='$updateId' ";
-        $updateQueryRun = mysqli_query($conn,$updateQuery);
-        if($updateQueryRun){
-            $_SESSION['updateStatus'] = 'tab4';
-            if($formRole=='admin'){
-                header("Location:../dashboard/admin.php");
-            }else{
-                header("Location:../dashboard/client.php");
-            }
-        }   
-    }
-?>

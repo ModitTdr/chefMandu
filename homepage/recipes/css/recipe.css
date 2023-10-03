@@ -1,0 +1,145 @@
+.banner {
+  width: 60%;
+  margin: 1em auto;
+  display: flex;
+  background-color: #f4b285;
+  border-radius: 1em;
+  z-index: 2;
+  box-shadow: -4px 4px 18px #181818;
+}
+.card-img {
+  width: 60%;
+  height: 250px;
+}
+.card-img img {
+  filter: brightness(90%);
+  object-fit: cover;
+}
+.info {
+  width: 20em;
+  padding: 1em;
+}
+.title h2 {
+  letter-spacing: -1px;
+}
+.description p {
+  margin-top: 10px;
+  letter-spacing: -0.1px;
+}
+.card-category-type {
+  margin-top: 4em;
+}
+/* main-body */
+.main {
+  position: absolute;
+  background-color: #ffa57871;
+  top: 16em;
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%);
+  border-radius: 1em;
+  padding: 1em 2em;
+}
+.main div {
+  margin-top: 0.8em;
+}
+.ingredients {
+  margin-top: 8.2em !important;
+}
+hr {
+  width: 90%;
+  margin: 1.4em auto;
+  height: 6px;
+  border-radius: 6px;
+  background-color: rgba(255, 141, 80, 0.51);
+  border: none;
+  align-items: center;
+}
+form {
+  background-color: rgba(255, 242, 204, 0.6);
+  width: 49%;
+  border-radius: 0.6em;
+  padding: 0.8em;
+}
+form textarea {
+  background-color: transparent;
+  border: none;
+  border-radius: 0.6em;
+  resize: none;
+  padding: 0.2em;
+}
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.comments {
+  border: 1px solid rgba(0, 0, 0, 0.363);
+  border-radius: 0.6em;
+  padding: 0.8em;
+}
+.comments button {
+  padding: 0.6em 1em;
+  background-color: var(--color3);
+  border: none;
+  border-radius: 0.4em;
+  color: var(--color1);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.comments button svg {
+  height: 16px;
+}
+.comments button p {
+  margin: auto;
+}
+.comment-sec {
+  background-color: rgba(255, 242, 204, 0.6);
+  border-radius: 0.6em;
+  padding: 0.8em;
+  margin-top: 1.4em;
+}
+.sections:nth-child(even) {
+  background-color: #ff8d5017;
+  border-radius: 0.6em;
+  padding: 0.8em;
+  margin-top: 0;
+}
+.sections:nth-child(odd) {
+  background-color: transparent;
+  border-radius: 0.6em;
+  padding: 0.8em;
+  margin-top: 0;
+}
+.sections .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0;
+}
+.sections .main-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cmt {
+  margin-top: 0px !important;
+}
+.uname {
+  font-size: 20px;
+  font-weight: 600;
+}
+.dates {
+  font-weight: light;
+  font-style: italic;
+  font-size: 16px;
+}
+.del {
+  cursor: pointer;
+  color: black;
+}
+.del:hover {
+  color: rgb(255, 141, 80);
+}

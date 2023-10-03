@@ -40,4 +40,5 @@
 }
 .cards {
   row-gap: 4vh;
+  gap: 2vw !important;
 }

@@ -33,7 +33,7 @@
           <div id="heading">Edit Profile</div>
 
           <div class="form-input">
-            <form action="edit.php" method="GET">
+            <form action="edit(own).php" method="GET">
               <div class="error"></div>
               <span id="user-wrapper">
                 <input type="text" placeholder="Username" id="uname" name="uname" value="<?php echo $uname?>" required />
@@ -82,6 +82,6 @@
         $updateId = $_GET['updateId'];
         $updateQuery="UPDATE users SET username='$updatedUname', email='$updatedEmail', role='$updatedRole' WHERE id='$updateId' ";
         $updateQueryRun = mysqli_query($conn,$updateQuery);
-        header("Location:../dashboard/admin.php");
+        header("Location:../login/login.php");
     }
 ?>

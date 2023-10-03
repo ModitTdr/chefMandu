@@ -15,7 +15,7 @@ $uid = $row['id'];
     <div class="tabs-data">
       <div class="dash-title">
             <i class="fa-sharp fa-solid fa-heart"></i>
-            <span>Recipe List</span>
+            <span>Favourites List</span>
       </div>
       <?php 
             $select = "SELECT * FROM fav JOIN users ON fav.uid = users.id JOIN recipes ON fav.rid = recipes.rid JOIN categories ON recipes.cate_id=categories.id  WHERE users.id='$uid' ORDER BY recipes.rid";
@@ -27,6 +27,7 @@ $uid = $row['id'];
               while($row = mysqli_fetch_assoc($exe)){
             ?>
             <div class="card-container">
+              <a href="../homepage/recipes/recipe.php?recipe=<?php echo $row['rid'];?>">
               <div class="card-header">
                 <div class="card-img">
                   <img src="../uploads/<?php echo $row['rimg']?>" halt="" />
@@ -48,7 +49,7 @@ $uid = $row['id'];
                 </div>
               </div>
               <div class="card-footer">
-                <div class="card-rating">
+                <!-- <div class="card-rating">
                   <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="24"
@@ -125,7 +126,7 @@ $uid = $row['id'];
                               />
                   </svg>
                   <span>0/5</span>
-                </div>
+                </div> -->
                 <div class="card-save">
                   <a href="../crud(php)/favourites/remove-save-dash.php?rid=<?php echo $row['rid'];?>&uname=<?php echo $_SESSION['Username'];?>" class="fav-btn">
                     <svg
@@ -144,6 +145,7 @@ $uid = $row['id'];
                   </a>
                 </div>
               </div>
+              </a>
             </div>
             <?php
               } }else{echo "<h4 align='center'>Currently no recipes found</h4?";}

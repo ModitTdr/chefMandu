@@ -32,10 +32,10 @@
       <!-- navigation logo -->
       <div class="logo">
         <div class="logo-img">
-          <img src="../img/new-logo-svg-cropped.svg" alt="" />
+          <a href="../homepage/main.php"><img src="../img/new-logo-svg-cropped.svg" alt="" /></a>
         </div>
         <div class="logo-name">
-          <span>ChefMandu</span>
+        <a href="../homepage/main.php"><span>ChefMandu</span></a>
         </div>
       </div>
       <!-- navigation menu -->
@@ -87,10 +87,10 @@
         </div>
         <!-- top-bar-mid -->
         <div class="top-bar-mid">
-          <div class="search-bar">
+          <!-- <div class="search-bar">
             <i class="uil uil-search"></i>
             <input type="search" name="" id="" placeholder="Search here....." />
-          </div>
+          </div> -->
         </div>
 
         <!-- top-bar-right -->
@@ -177,13 +177,34 @@
               </div>
             </div>
             <!-- Dashboard Section Row-3 -->
-              <!-- <div class="infos">
+              <div class="infos">
                 <div class="infos-1">
                   <div class="infos-details">
                     <div class="infos-img"><i class="uil uil-books"></i></div>
                     <div class="infos-info">
-                      <div class="infos-data">Recipes</div>
-                      <div class="infos-number">1</div>
+                      <div class="infos-data">My Recipes</div>
+                      <div class="infos-number">
+                        <?php 
+                          $no="select * from recipes WHERE id = '$id'";
+                          $noEx=mysqli_query($conn,$no);
+                          echo mysqli_num_rows($noEx);
+                        ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="infos-1">
+                  <div class="infos-details">
+                    <div class="infos-img"><i class="uil uil-books"></i></div>
+                    <div class="infos-info">
+                      <div class="infos-data">Recipes(Total)</div>
+                      <div class="infos-number">
+                      <?php 
+                        $no="select * from recipes";
+                        $noEx=mysqli_query($conn,$no);
+                        echo mysqli_num_rows($noEx);
+                        ?>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -192,11 +213,16 @@
                     <div class="infos-img"><i class="uil uil-users-alt"></i></div>
                     <div class="infos-info">
                       <div class="infos-data">Users</div>
-                      <div class="infos-number">1</div>
+                      <div class="infos-number"><?php 
+                        $no="select * from users";
+                        $noEx=mysqli_query($conn,$no);
+                        echo mysqli_num_rows($noEx)-1;
+                        ?>
+                        </div>
                     </div>
                   </div>
                 </div>
-              </div> -->
+              </div>
           
           
           </div>
@@ -224,25 +250,45 @@
                 </svg>
               <span>Add Recipes</span>
             </div>
+            <?php
+                if(!empty($_SESSION['updateStatus'])){
+                  if($_SESSION['updateStatus']=="tab2"){
+                    echo "<div class='status'>Success</div>";
+                  }else if($_SESSION['updateStatus']=="tab2Failed"){
+                    echo "<div class='status red'>Failed</div>";
+                  }
+                }
+              ?>
             <div class="prodAdd">
               <form action="../crud(php)/addproduct.php" method="POST" enctype="multipart/form-data">
                 <div class="prodTitle">
                   <label for="title">Title</label>
-                  <input type="text" id="title" name="title">
+                  <input type="text" id="title" name="title" required pattern="[^0-9]*" title="Must not contain number" placeholder="Enter your recipe name">
                 </div>
                 <div class="prodIngredient">
                   <label for="ingredient">Ingredients</label>
-                  <textarea name="ingredient" id="ingredient" cols="11" rows="3"></textarea>
+                  <textarea name="ingredient" id="ingredient" cols="11" rows="3" required placeholder="Enter your ingredients"></textarea>
+                </div>
+                <div class="prodDesc">
+                  <label for="description">Process</label>
+                  <textarea name="description" id="description" cols="11" rows="3" maxlength="50" required placeholder="Enter your recipe making process"></textarea>
+                </div>
+                <div class="category">
+                  <div>
+                    <label for="prep">Cooking Time</label>
+                    <input type="number" id="prep" name="prept" required placeholder="In minutes(i.e.120)">
+                  </div>
+                  <div>
+                    <label for="cate">Category</label>
+                    <select name="categories" id="cate">
+                      <option value="1">Vegetarian</option>
+                      <option value="2">Non-Vegetarian</option>
+                    </select>
+                  </div>
                 </div>
                 <div class="prodDesc">
                   <label for="description">Description</label>
-                  <textarea name="description" id="description" cols="11" rows="3" maxlength="50"></textarea>
-                </div>
-                <div class="category">
-                  <select name="categories">
-                    <option value="1">Vegetarian</option>
-                    <option value="2">Non-Vegetarian</option>
-                  </select>
+                  <textarea name="info" id="description" cols="11" rows="3" maxlength="200" required placeholder="Tell something about your recipe"></textarea>
                 </div>
                 <div class="prodImage">
                   <label for="file">
@@ -338,7 +384,7 @@
             <div class="table-container">
                 <table>
                   <?php
-                    $selectQuery = "SELECT * FROM recipes";
+                    $selectQuery = "SELECT * FROM recipes JOIN categories on recipes.cate_id = categories.id";
                     $selectExec = mysqli_query($conn,$selectQuery);
                     if(mysqli_num_rows($selectExec)==0){
                       echo "<div style='text-align:center;font-size:1.2em;'>No recipes added</div>";
@@ -347,8 +393,11 @@
                   <tr>
                     <th>Id</th>
                     <th>Title</th>
-                    <th style="width:30%;">Ingredient</th>
                     <th>Description</th>
+                    <th style="width:30%;">Ingredient</th>
+                    <th>Process</th>
+                    <th>Category</th>
+                    <th>Cooking Time</th>
                     <th>Image</th>
                     <th>Edit</th>
                     <th>Delete</th>
@@ -361,17 +410,23 @@
                       $ingredient = $row['ringredients'];
                       $description = $row['rdescription'];
                       $img = $row['rimg'];
+                      $cate = $row['name'];
+                      $infos = $row['infos'];
+                      $prep = $row['prep_time_min'];
                       $i++;
                   ?>
                   <tr>
                     <td><?php echo $i?></td>
                     <td><?php echo $title?></td>
+                    <td><?php echo $infos?></td>
                     <td><?php echo $ingredient?></td>
                     <td><?php echo $description?></td>
+                    <td><?php echo $cate?></td>
+                    <td><?php echo $prep?></td>
                     <td><?php echo "<img style='width:120px;' src='../uploads/$img'>"?></td>
                     <td>
                       <?php
-                      echo "<a href='../crud(php)/editproduct.php?id=$id&editTitle=$title&editIngredient=$ingredient&editDesc=$description&role=$Mrole'><button id='edit'>Edit</button<</a>";
+                      echo "<a href='../crud(php)/editproduct.php?id=$id&editTitle=$title&infos=$infos&editIngredient=$ingredient&editDesc=$description&cate=$cate&prep=$prep&role=$Mrole'><button id='edit'>Edit</button<</a>";
                       ?>
                     </td>
                   <td>

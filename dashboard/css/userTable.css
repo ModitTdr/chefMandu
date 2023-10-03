@@ -35,7 +35,7 @@ button {
 }
 #del {
   background-color: #7e194698;
-  width: 80%;
+  width: 100%;
 }
 #del:hover {
   background-color: #7e1946da;

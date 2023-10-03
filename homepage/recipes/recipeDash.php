@@ -26,7 +26,7 @@
         <ul>
           <li><a href="../main.php">Home</a></li>
           <li><a href="#" class="active">Recipes</a></li>
-          <li><a href="#">AboutUs</a></li>
+          
           <?php
             session_start();
             if(!empty($_SESSION['isLoggedIn'] )){

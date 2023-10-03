@@ -38,11 +38,15 @@ createRecipe.addEventListener("click", function () {
 
 //for alert message
 var alert = document.querySelector(".status");
+//add prod
+if (alertMsg == "tab2" || alertMsg == "tab2Failed") {
+  tabs[1].click();
+}
 //dashboard - user list alert
 if (alertMsg == "tab3" || alertMsg == "tab3Failed") {
   tabs[2].click();
 }
 //dashboard - product alert
 if (alertMsg == "tab4" || alertMsg == "tab4Failed") {
-  tabs[tabs.length - 1].click();
+  tabs[tabs.length - 2].click();
 }
