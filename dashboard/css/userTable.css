@@ -1,0 +1,44 @@
+table {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-collapse: collapse;
+  border-radius: 1em;
+}
+th,
+td {
+  padding: 0.5em 1em;
+  text-align: center;
+}
+
+tr:first-child {
+  border-bottom: 1px solid #181818ab;
+}
+tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+button {
+  border: none;
+  padding: 0.4em 0.5em;
+  border-radius: 0.6em;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+}
+#edit {
+  background-color: rgba(14, 118, 173, 0.5);
+  width: 100%;
+}
+#edit:hover {
+  background-color: rgba(14, 118, 173, 1);
+}
+#del {
+  background-color: #7e194698;
+  width: 100%;
+}
+#del:hover {
+  background-color: #7e1946da;
+}

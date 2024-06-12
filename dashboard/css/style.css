@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap");
+
+/*====Colors====*/
+:root {
+  --color1: #fff2cc;
+  --color2: #f4b183;
+  --color3: #ff8500;
+  --color4: #181818;
+}
+
+/*====Global====*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+body {
+  background-color: var(--color1);
+  color: var(--color4);
+  min-height: 100vh;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+button {
+  cursor: pointer;
+}
+.t-img {
+  width: 20px;
+}
+
+/* ===Navigation=== */
+nav {
+  width: 125px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0.6em;
+  background-color: var(--color2);
+  transition: z-index 0.3s ease;
+  transition: border-radius 0.3s ease;
+  transition: width 0.3s ease;
+  white-space: nowrap;
+}
+nav.minimize {
+  width: 265px;
+}
+
+/* logo */
+.logo {
+  display: flex;
+  align-items: center;
+  height: 140px;
+}
+.logo-img img {
+  width: 80px;
+}
+.logo-name {
+  margin-left: 10px;
+  font-size: 1.4em;
+  letter-spacing: -0.6px;
+  font-weight: 600;
+}
+/* nav-menu */
+.nav-menu ul {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.15s ease;
+}
+.nav-menu ul li button {
+  background: transparent;
+  border: none;
+  width: 100%;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.nav-menu ul li i {
+  min-width: 75px;
+  height: 42px;
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.15s ease;
+}
+.nav-menu span,
+.logo span {
+  opacity: 0;
+  visibility: hidden;
+}
+.nav-menu span,
+.logo span {
+  transition: 0.15s ease;
+}
+nav.minimize .logo span {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.4s;
+}
+nav.minimize .nav-menu span {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.4s;
+}
+.nav-menu ul li button:hover {
+  color: var(--color1);
+  font-weight: 700;
+}
+.nav-menu ul li.active button {
+  color: var(--color1);
+  font-weight: 700;
+}
+
+/* ===Dashboard=== */
+.dashboard {
+  width: calc(100% - 95px);
+  min-height: 100vh;
+  position: relative;
+  left: 95px;
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  background-color: var(--color1);
+  border-radius: 2em 0 0 2em;
+  box-shadow: -3px 0 12px 0 #18181867;
+}
+nav.minimize ~ .dashboard {
+  width: calc(100% - 235px);
+  left: 235px;
+}
+
+/* ==Top Bar== */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4em 4em;
+}
+
+/* .top-bar-left */
+.top-bar-left {
+  font-size: 2em;
+  cursor: pointer;
+}
+/* .top-bar-mid */
+.top-bar-mid {
+  border: 1px solid #1818183a;
+  border-radius: 0.4em;
+}
+.search-bar {
+  font-size: 1.2em;
+  padding: 0 0.4em;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+.search-bar i {
+  width: 30px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.top-bar-mid input {
+  background-color: transparent;
+  border: none;
+  width: 40vw;
+  height: 42px;
+  padding: 0.4em 0.6em;
+}
+.top-bar-mid input:focus {
+  outline: none;
+}
+/* .top-bar-right */
+.top-bar-right {
+  display: flex;
+  justify-content: right;
+  position: relative;
+}
+.top-bar-right .uil-ellipsis-v {
+  font-size: 2em;
+  cursor: pointer;
+  width: 50px;
+  text-align: center;
+}
+.utils {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  background-color: #f4b083c2;
+  border-radius: 1em 0 1em 1em;
+  padding: 0.4em 0.8em;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 0 22px 0 #ff840063;
+}
+.utils ul i {
+  text-align: center;
+  width: 30px;
+}
+.utils ul li a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: fit-content;
+  color: var(--color4);
+  padding: 0.4em;
+  width: 100%;
+}
+.utils ul li a:hover {
+  background-color: #ff840042;
+  border-radius: 0.6em;
+}
+.utils.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ==Body== */
+.body {
+  max-height: 100%;
+}
+.tabs-data {
+  display: none;
+  height: 100%;
+  padding: 0.4em 1em;
+}
+.tabs-data.active {
+  display: block;
+  animation: fade 0.4s ease;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

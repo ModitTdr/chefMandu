@@ -27,20 +27,21 @@ if(isset($_POST['submit'])){
         if( mysqli_num_rows($checkPassExe) > 0 ){
             $_SESSION['Username'] = $rowUser['username'];
             $_SESSION['Role'] = $rowUser['role'];
-            
+            $_SESSION['isLoggedIn'] = 'true';
             //checking roles
             if( $_SESSION['Role']=='admin' ){
-                echo'you are admin';
-                header('Location:../check.php');
+                header('Location:../../homepage/main.php');
             }else{
                 echo'you are user';
-                header('Location:../check.php');
+                header('Location:../../homepage/main.php');
             }
         }else{
-            die('Password error');
+            $_SESSION['loginStatus'] = 'Password';
+            header('Location:../login.php');
         } 
     }else{
-        die("Username doesn't exists");
+        $_SESSION['loginStatus'] = 'Username';
+        header('Location:../login.php');
     }
 }
     
