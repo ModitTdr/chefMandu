@@ -99,15 +99,9 @@
             <h3>Leave a Review</h3>
             <div class="comments">
                 <input type="hidden" id="name" value="<?php echo $_SESSION['Username']?>">
-                <textarea name="" id="comment" cols="60" rows="6" placeholder="Type here..."></textarea>
+                <textarea name="" id="comment" cols="30" rows="6" placeholder="Type here..."></textarea>
                 <div class="comment-footer">
-                    <div class="ratings">
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_1" data-rating="1"></i>
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_2" data-rating="2"></i>
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_3" data-rating="3"></i>
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_4" data-rating="4"></i>
-                        <i class="fas fa-star star-light submit_star mr-1" id="submit_star_5" data-rating="5"></i>
-                    </div>
+                    
                     <button type="submit" id="btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 21a9 9 0 1 0-9-9c0 1.488.36 2.891 1 4.127L3 21l4.873-1c1.236.64 2.64 1 4.127 1Z"/></svg>
                         <p>Comment</p>

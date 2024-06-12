@@ -70,7 +70,7 @@
       }
       btn.addEventListener("click",function(e){
         for(let i=0; i<inputs.length; i++){
-          if(oldInput[0]==inputs[0].value && oldInput[1]==inputs[1].value){
+          if(oldInput[0]==inputs[0].value && oldInput[1]==inputs[1].value && oldInput[2]==inputs[2].value){
             e.preventDefault();
             alert("Go Back or change the data");
             btn.style.background = "grey";
@@ -90,25 +90,30 @@
         $updatedEmail = $_GET['email'];
         $updatedRole = $_GET['role'];
         $updateId = $_GET['updateId'];
-        $updateQuery="UPDATE users SET username='$updatedUname', email='$updatedEmail', role='$updatedRole' WHERE id='$updateId' ";
+        $updateQuery="UPDATE users SET username='$updatedUname', email='$updatedEmail', role='$updatedRole' WHERE id='$updateId';";
         
         //to check duplication
         $dupUser = "SELECT * from users WHERE username='$updatedUname' ";
         $dupEmail = "SELECT * from users WHERE email='$updatedEmail' ";
         $dupUserExe = mysqli_query($conn,$dupUser);
         $dupEmailExe = mysqli_query($conn,$dupEmail);
-        
         session_start();
-        if(mysqli_num_rows($dupUserExe) > 0 && mysqli_num_rows($dupEmailExe) > 0){
+        // print_r($dupUserExe);
+        // return;
+        if(mysqli_num_rows($dupUserExe)>1){
           $_SESSION['updateStatus'] = 'tab3Failed';
           header("Location:../dashboard/admin.php");
-        }else{
+        }
+        if(mysqli_num_rows($dupEmailExe) >1){
+          $_SESSION['updateStatus'] = 'tab3Failed';
+          header("Location:../dashboard/admin.php");
+        }
           $updateQueryRun = mysqli_query($conn,$updateQuery);
           if($updateQueryRun){
             $_SESSION['updateStatus'] = 'tab3';
           }
           header("Location:../dashboard/admin.php");
-        } 
+        
     }
     if(isset($_GET['back'])){
       header("Location:../dashboard/admin.php");

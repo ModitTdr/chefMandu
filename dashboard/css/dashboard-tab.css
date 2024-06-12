@@ -173,10 +173,12 @@
   gap: 3vw;
   color: var(--a);
 }
+
 .infos-info {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 0.85em;
 }
 .infos-img {
   font-size: 2em;

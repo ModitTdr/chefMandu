@@ -2,6 +2,8 @@
   session_start();
   if(!empty($_SESSION['Username']) && !empty($_SESSION['isLoggedIn'])){
     $username = $_SESSION['Username'];
+  }else{
+    header("Location:../login/login.php");
   }
   ?>
 <!DOCTYPE html>
@@ -222,6 +224,7 @@
                     </div>
                   </div>
                 </div>
+                
               </div>
           
           
@@ -271,7 +274,7 @@
                 </div>
                 <div class="prodDesc">
                   <label for="description">Process</label>
-                  <textarea name="description" id="description" cols="11" rows="3" maxlength="50" required placeholder="Enter your recipe making process"></textarea>
+                  <textarea name="description" id="description" cols="11" rows="3" maxlength="300" required placeholder="Enter your recipe making process"></textarea>
                 </div>
                 <div class="category">
                   <div>
@@ -288,7 +291,7 @@
                 </div>
                 <div class="prodDesc">
                   <label for="description">Description</label>
-                  <textarea name="info" id="description" cols="11" rows="3" maxlength="200" required placeholder="Tell something about your recipe"></textarea>
+                  <textarea name="info" id="description" cols="11" rows="3" maxlength="500" required placeholder="Tell something about your recipe"></textarea>
                 </div>
                 <div class="prodImage">
                   <label for="file">
@@ -370,7 +373,7 @@
           <div class="UserListcontent">      
             <div class="dash-title">
               <i class="uil uil-users-alt"></i>
-              <span>Users List</span>
+              <span>Recipe List</span>
               <?php
                 if(!empty($_SESSION['updateStatus'])){
                   if($_SESSION['updateStatus']=="tab4"){
@@ -394,7 +397,7 @@
                     <th>Id</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th style="width:30%;">Ingredient</th>
+                    <th style="width:20%;">Ingredient</th>
                     <th>Process</th>
                     <th>Category</th>
                     <th>Cooking Time</th>
@@ -423,10 +426,10 @@
                     <td><?php echo $description?></td>
                     <td><?php echo $cate?></td>
                     <td><?php echo $prep?></td>
-                    <td><?php echo "<img style='width:120px;' src='../uploads/$img'>"?></td>
+                    <td><?php echo "<img style='width:140px; height:80px;object-fit:cover;' src='../uploads/$img'>"?></td>
                     <td>
                       <?php
-                      echo "<a href='../crud(php)/editproduct.php?id=$id&editTitle=$title&infos=$infos&editIngredient=$ingredient&editDesc=$description&cate=$cate&prep=$prep&role=$Mrole'><button id='edit'>Edit</button<</a>";
+                      echo "<a href='../crud(php)/editproduct.php?id=$id&editTitle=$title&infos=$infos&editIngredient=$ingredient&editDesc=$description&cate=$cate&prep=$prep&role=$Mrole&imgs=$img'><button id='edit'>Edit</button<</a>";
                       ?>
                     </td>
                   <td>

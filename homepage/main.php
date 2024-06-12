@@ -78,7 +78,7 @@
       <h1>We offer</h1>
       <div class="services-wrapper">
         <div class="services">
-          <svg
+          <!-- <svg
             width="700pt"
             height="700pt"
             version="1.1"
@@ -99,13 +99,15 @@
                 d="m225.25 334.19h176.13c9.6641 0 17.5-7.8281 17.5-17.5s-7.8359-17.5-17.5-17.5h-176.13c-9.6641 0-17.5 7.8281-17.5 17.5s7.832 17.5 17.5 17.5z"
               />
             </g>
-          </svg>
-
-          <h5>Many Recipes</h5>
-          <p>
-            We are pleased to offer a large selection of recipes that cover a
-            variety of cuisines, flavors, and dietary preferences.
-          </p>
+          </svg> -->
+          <i class="fa-solid fa-blender"></i>
+          <span>
+            <h5>Many Recipes</h5>
+            <p>
+              We are pleased to offer a large selection of recipes that cover a
+              variety of cuisines, flavors, and dietary preferences.
+            </p>
+          </span>
         </div>
         <!-- <div class="services">
           <svg
@@ -164,6 +166,7 @@
     
     <div class="row2" id="explore">
       <h1>Cook Fast</h1>
+      <p>Get ready as quickly as possible.</p>
       <div class="tabs">
         <!-- Tabs -->
         <ul>
@@ -173,6 +176,7 @@
               width="24"
               height="24"
               viewBox="0 0 24 24"
+              
             >
               <g
                 fill="none"
@@ -255,8 +259,9 @@
       </div>
     </div>
     
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/tabs.js"></script>
+    <script src="js/animate.js"></script>
   </body>
 </html>

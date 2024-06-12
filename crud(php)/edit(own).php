@@ -1,15 +1,20 @@
 <?php
     session_start();
-    session_destroy();
-    unset($_SESSION['Username']);
-    unset($_SESSION['Role']);
-    unset($_SESSION['isLoggedin']);
-
-    include_once('../login/php/connection.php');
-    $id = $_GET['id'];
-    $email = $_GET['editEmail'];
-    $uname = $_GET['editName'];
-    $role = $_GET['editRole'];
+    if(!empty($_SESSION['Username'])){
+      session_destroy();
+      unset($_SESSION['Username']);
+      unset($_SESSION['Role']);
+      unset($_SESSION['isLoggedin']);
+  
+      include_once('../login/php/connection.php');
+      $id = $_GET['id'];
+      $email = $_GET['editEmail'];
+      $uname = $_GET['editName'];
+      $role = $_GET['editRole'];
+    }else{
+      header("Location:../login/login.php");
+    }
+    
     
 ?>
 <!DOCTYPE html>

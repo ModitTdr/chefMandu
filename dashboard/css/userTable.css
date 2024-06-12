@@ -8,11 +8,13 @@ th,
 td {
   padding: 0.5em 1em;
   text-align: center;
-  margin: 5em;
 }
 
 tr:first-child {
   border-bottom: 1px solid #181818ab;
+}
+tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 a {

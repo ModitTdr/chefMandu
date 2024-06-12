@@ -8,6 +8,7 @@
     $prep = $_GET['prep'];
     $role = $_GET['role'];
     $infos = $_GET['infos'];
+    $oldImg = $_GET['imgs'];
     session_start();
 ?>
 
@@ -21,7 +22,8 @@
         $updatedInfos = $_GET['info'];
         $formRole = $_GET['role'];
         $updateId = $_GET['updateId'];
-        $updateQuery="UPDATE recipes SET rtitle='$updatedTitle', ringredients='$updatedIngredients', rdescription='$updatedDescription',cate_id='$updatedCategory',infos='$updatedInfos',prep_time_min='$updatedPrepTime' WHERE rid='$updateId' ";
+        $img = $_GET['image'];
+        $updateQuery="UPDATE recipes SET rtitle='$updatedTitle', ringredients='$updatedIngredients', rdescription='$updatedDescription',cate_id='$updatedCategory',infos='$updatedInfos',prep_time_min='$updatedPrepTime',rimg='$img' WHERE rid='$updateId' ";
         $updateQueryRun = mysqli_query($conn,$updateQuery);
         if($updateQueryRun){
             $_SESSION['updateStatus'] = 'tab4';
@@ -33,6 +35,7 @@
                 exit();
             }
         }   
+        
     }
     
 ?>
@@ -77,7 +80,7 @@
                 </div>
                 <div class="prodDesc">
                     <label for="description">Process</label>
-                    <textarea name="description" id="description" cols="11" rows="3" maxlength="50"><?php echo $description?></textarea>
+                    <textarea name="description" id="description" cols="11" rows="3" maxlength="300"><?php echo $description?></textarea>
                 </div>
                 <div class="category">
                   <div>
@@ -108,7 +111,7 @@
                 </div>
                 <div class="prodDesc">
                   <label for="description">Description</label>
-                  <textarea name="info" id="description" cols="11" rows="3" maxlength="200" required placeholder="Tell something about your recipe"><?php echo $infos?></textarea>
+                  <textarea name="info" id="description" cols="11" rows="3" maxlength="500" required placeholder="Tell something about your recipe"><?php echo $infos?></textarea>
                 </div>
                 
                 <input type="hidden" value="<?php echo $id ?>" name="updateId"/>
