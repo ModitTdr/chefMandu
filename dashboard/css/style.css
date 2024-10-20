@@ -246,3 +246,7 @@ nav.minimize ~ .dashboard {
     opacity: 1;
   }
 }
+
+.testCss {
+  background-color: #181818;
+}
